@@ -11,7 +11,7 @@ struct carta
 	int defesa;
 	int magia;
 };
-
+// Separar em duas funções, e retirar o for e o vetor
 int main()
 {
 	carta Vet[2];
