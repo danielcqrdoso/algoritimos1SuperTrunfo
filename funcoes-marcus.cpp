@@ -39,6 +39,7 @@ int main()
 		arq1 << Vet[i].nome << endl;
 		arq1 << Vet[i].forca << endl;
 		arq1 << Vet[i].defesa << endl;
+		// remover o segundo endl
 		arq1 << Vet[i].magia << endl << endl;
 		
 	}
