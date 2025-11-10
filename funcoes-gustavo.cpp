@@ -1,5 +1,3 @@
-
-
 int main()
 {
 
@@ -14,12 +12,6 @@ int main()
         {"Player6", 50, 90, 20}
     };
 
-   
-    for (i; i < 6; i++)
-    
-{
-        Ler_Carta(iniciais[i].nome, iniciais[i].forca, iniciais[i].defesa, iniciais[i].magia);
-   }
 
     return 0;
 }
