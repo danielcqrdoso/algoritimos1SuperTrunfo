@@ -55,7 +55,7 @@ void ler_arquivos(carta cartas[])
 	
 	string entrada_string;
 	int entrada_forca, entrada_magia, entrada_defesa;
-	int count = 0;
+	int count = 5;
 	ifstream leitura;
 	leitura.open("cartas.txt", ifstream::in);
 	while(!leitura.eof())
