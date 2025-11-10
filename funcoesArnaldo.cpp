@@ -3,22 +3,26 @@
 #include <string>
 using namespace std;
 
-struct carta {
+struct carta 
+{
     string nome;
     int forca;
     int defesa;
     int magia;
 };
 
-int ler_arquivos(carta cartas[]) {
+int ler_arquivos(carta cartas[]) 
+{
     ifstream leitura("cartas.txt");
-    if (!leitura.is_open()) {
+    if (!leitura.is_open()) 
+	{
         std::ofstream arquivo("meuarquivo.txt"); 
         return 5;
     }
 
     int count = 5;
-    while (!leitura.eof()) {
+    while (!leitura.eof()) 
+	{
 		leitura >> cartas[count].nome
                    >> cartas[count].forca
                    >> cartas[count].defesa
@@ -30,7 +34,8 @@ int ler_arquivos(carta cartas[]) {
     return count;
 }
 
-int main() {
+int main() 
+{
     carta cartas[100];
     int total = ler_arquivos(cartas);
 
