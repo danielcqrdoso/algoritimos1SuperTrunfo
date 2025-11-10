@@ -16,7 +16,7 @@ int ler_arquivos(carta cartas[])
     ifstream leitura("cartas.txt");
     if (!leitura.is_open()) 
 	{
-        std::ofstream arquivo("meuarquivo.txt"); 
+        ofstream arquivo("cartas.txt"); 
         return 5;
     }
 
