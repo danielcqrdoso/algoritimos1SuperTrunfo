@@ -20,6 +20,7 @@ void Ler_Carta(string nome, int forca, int defesa, int magia)
 	arq1 << forca << endl;
 	arq1 << defesa << endl;
 	arq1 << magia << endl;
+	arq1.close();
 }
 
 int main()
