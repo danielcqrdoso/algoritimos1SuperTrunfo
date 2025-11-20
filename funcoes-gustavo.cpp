@@ -13,6 +13,29 @@ struct cartas {
     int magia;
 };
 
+int ler_arquivos(carta cartas[]) 
+{
+    ifstream leitura("cartas.txt");
+    if (!leitura.is_open()) 
+	{
+        ofstream arquivo("cartas.txt"); 
+        return 5;
+    }
+
+    int count = 5;
+    while (!leitura.eof()) 
+	{
+		leitura >> cartas[count].nome
+                   >> cartas[count].forca
+                   >> cartas[count].defesa
+                   >> cartas[count].magia;
+        count++;
+    }
+
+    leitura.close();
+    return count;
+}
+
 cartas selecionar_carta(vector<int> &numeros_repetidos)
 {
     srand(time(NULL));
@@ -29,6 +52,7 @@ cartas selecionar_carta(vector<int> &numeros_repetidos)
     int id;
     
     // Sortear sem repetir
+    // o 6 deve ser substituido por o retorne da função do arnaldo + 1
     do {
         id = rand() % 6;
     } while (find(numeros_repetidos.begin(), numeros_repetidos.end(), id) != numeros_repetidos.end());
