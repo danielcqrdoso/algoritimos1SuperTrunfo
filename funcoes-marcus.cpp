@@ -72,7 +72,7 @@ void Excluir_Carta(string carta2)
 	arq2.close();
 }
 
-int main()
+int Menu1()
 {
 	int num;
 	cout << "1 - Adicionar " << endl;
