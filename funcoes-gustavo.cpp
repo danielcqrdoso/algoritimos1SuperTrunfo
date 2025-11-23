@@ -32,7 +32,7 @@ int ler_arquivos(cartas cartas[])
     }
 
     leitura.close();
-    return count; // <-- ESTE count será usado no sorteio
+    return count; 
 }
 
 cartas selecionar_carta(int numeros_repetidos[], int &qtd, int total)
