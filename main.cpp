@@ -120,8 +120,7 @@ int Menu1() {
 
   if (num == 1) {
     cartas carta1;
-    cout << "Digite o nome, forca, defesa, magia. Separados por espaco ou "
-            "virgula"
+    cout << "Digite o nome, forca, defesa, magia. Separados por espaco ou enter"
          << endl;
     cin >> carta1.nome >> carta1.forca >> carta1.defesa >> carta1.magia;
     Ler_Carta(carta1.nome, carta1.forca, carta1.defesa, carta1.magia);
