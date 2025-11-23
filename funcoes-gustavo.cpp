@@ -1,7 +1,6 @@
-
 #include <iostream>
 #include <string>
-#include <vector>
+#include <fstream>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
@@ -13,30 +12,30 @@ struct cartas {
     int magia;
 };
 
-int ler_arquivos(carta cartas[]) 
+int ler_arquivos(cartas cartas[]) 
 {
     ifstream leitura("cartas.txt");
     if (!leitura.is_open()) 
-	{
+    {
         ofstream arquivo("cartas.txt"); 
         return 5;
     }
 
     int count = 5;
     while (!leitura.eof()) 
-	{
-		leitura >> cartas[count].nome
-                   >> cartas[count].forca
-                   >> cartas[count].defesa
-                   >> cartas[count].magia;
+    {
+        leitura >> cartas[count].nome
+                >> cartas[count].forca
+                >> cartas[count].defesa
+                >> cartas[count].magia;
         count++;
     }
 
     leitura.close();
-    return count;
+    return count; // <-- ESTE count será usado no sorteio
 }
 
-cartas selecionar_carta(vector<int> &numeros_repetidos)
+cartas selecionar_carta(int numeros_repetidos[], int &qtd, int total)
 {
     srand(time(NULL));
 
@@ -50,23 +49,31 @@ cartas selecionar_carta(vector<int> &numeros_repetidos)
     };
 
     int id;
-    
-    // Sortear sem repetir
-    // o 6 deve ser substituido por o retorne da função do arnaldo + 1
-    do {
-        id = rand() % 6;
-    } while (find(numeros_repetidos.begin(), numeros_repetidos.end(), id) != numeros_repetidos.end());
 
-    numeros_repetidos.push_back(id);
+    do {
+        id = rand() % (count + 1);
+    } 
+    while ([&]() {
+        for (int i = 0; i < qtd; i++)
+            if (numeros_repetidos[i] == id) return true;
+        return false;
+    }());
+
+    numeros_repetidos[qtd] = id;
+    qtd++;
 
     return cartasIniciais[id];
 }
 
 int main()
 {
-    vector<int> numeros_repetidos;
+    int numeros_repetidos[100];
+    int qtd = 0;
 
-    cartas escolhida = selecionar_carta(numeros_repetidos);
+    cartas todas[100];
+    int count = ler_arquivos(todas); 
+
+    cartas escolhida = selecionar_carta(numeros_repetidos, qtd, count);
 
     cout << "Carta sorteada:\n";
     cout << escolhida.nome << " "
