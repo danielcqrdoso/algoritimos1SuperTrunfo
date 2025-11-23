@@ -24,8 +24,6 @@ int ler_arquivos(cartas cartas[]) {
     return count;
   }
 
-  // para evitar confusões essa variavel foi criada
-
   while (!leitura.eof()) {
     leitura >> cartas[count].nome >> cartas[count].forca >>
         cartas[count].defesa >> cartas[count].magia;
