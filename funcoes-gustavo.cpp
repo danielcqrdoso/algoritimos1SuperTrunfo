@@ -35,34 +35,28 @@ int ler_arquivos(cartas cartas[])
     return count; 
 }
 
-cartas selecionar_carta(int numeros_repetidos[], int &qtd, int total)
-{
-    srand(time(NULL));
+int selecionar_index_carta(int numeros_repetidos[], int &quantidade_repetidos,
+                           int total_cartas) {
+  int id;
+  bool repetido = false;
 
-    cartas cartasIniciais[6] = {
-        {"Player1", 80, 60, 0},
-        {"Player2", 80, 40, 50},
-        {"Player3", 90, 70, 10},
-        {"Player4", 90, 50, 0},
-        {"Player5", 70, 70, 10},
-        {"Player6", 50, 90, 20}
-    };
+  do {
+    // Gera um número entre 0 e total de cartas - 1
+    id = rand() % (total_cartas);
+    // validando se não houve repetição
+    for (int i = 0; i < quantidade_repetidos; i++) {
+      if (numeros_repetidos[i] == id) {
+        repetido = true;
+        break;
+      }
+      repetido = false;
+    }
+  } while (repetido);
 
-    int id;
+  numeros_repetidos[quantidade_repetidos] = id;
+  quantidade_repetidos++;
 
-    do {
-        id = rand() % (count + 1);
-    } 
-    while ([&]() {
-        for (int i = 0; i < qtd; i++)
-            if (numeros_repetidos[i] == id) return true;
-        return false;
-    }());
-
-    numeros_repetidos[qtd] = id;
-    qtd++;
-
-    return cartasIniciais[id];
+  return id;
 }
 
 int main()
